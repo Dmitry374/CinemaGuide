@@ -43,8 +43,10 @@ class MainPageFragment : Fragment() {
 
         binding.mainPageViewModel = mainPageViewModel
 
+        mainPageViewModel.fetchPopularMovies()
+
         mainPageViewModel.films.observe(viewLifecycleOwner, Observer { films ->
-            binding.tvFilms.text = films.toString()
+
         })
 
         return binding.root

@@ -1,7 +1,9 @@
 package com.example.cinemaguide.repository
 
-import androidx.lifecycle.LiveData
+import com.example.cinemaguide.data.Movie
+import io.reactivex.Single
 
 interface RemoteRepository {
-    fun loadFilms(): LiveData<List<String>>
+
+    fun fetchPopularMovies(): Single<Movie>
 }
