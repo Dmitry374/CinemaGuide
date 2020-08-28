@@ -43,10 +43,18 @@ class MainPageFragment : Fragment() {
 
         binding.mainPageViewModel = mainPageViewModel
 
+        binding.lifecycleOwner = this
+
+        // Load data
         mainPageViewModel.fetchPopularMovies()
 
-        mainPageViewModel.films.observe(viewLifecycleOwner, Observer { films ->
+        val adapter = MovieAdapter()
+        binding.moviesList.adapter = adapter
 
+        mainPageViewModel.films.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.submitList(it)
+            }
         })
 
         return binding.root

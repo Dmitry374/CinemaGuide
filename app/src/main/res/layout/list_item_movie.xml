@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="movie"
+            type="com.example.cinemaguide.data.Movie.Result" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_between"
+        android:layout_marginLeft="@dimen/margin_between"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/margin_between"
+        android:layout_marginRight="@dimen/margin_between"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:background="?attr/selectableItemBackground"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="@dimen/card_radius"
+        app:cardElevation="@dimen/card_elevation">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/margin">
+
+            <TextView
+                android:id="@+id/movieTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/title_text_size"
+                android:textStyle="bold"
+                android:text="@{movie.title}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                tools:text="Film name"/>
+
+            <TextView
+                android:id="@+id/movieVoteAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/subtitle_text_size"
+                android:layout_marginTop="@dimen/margin_between"
+                android:text="@{String.valueOf(movie.voteAverage)}"
+                app:layout_constraintTop_toBottomOf="@id/movieTitle"
+                app:layout_constraintStart_toStartOf="@id/movieTitle"
+                tools:text="Vote average"/>
+
+            <TextView
+                android:id="@+id/movieReleaseDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between"
+                android:text="@{movie.releaseDate}"
+                app:layout_constraintTop_toBottomOf="@id/movieVoteAverage"
+                app:layout_constraintStart_toStartOf="@id/movieVoteAverage"
+                tools:text="Release date"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
