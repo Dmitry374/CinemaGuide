@@ -6,9 +6,9 @@ import com.example.cinemaguide.network.Api
 import io.reactivex.Single
 import javax.inject.Inject
 
-class RemoteRepositoryImpl @Inject constructor(
+class MovieRepositoryImpl @Inject constructor(
     private val api: Api
-) : RemoteRepository {
+) : MovieRepository {
 
     override fun fetchPopularMovies(): Single<Movie> {
         return api.loadPopularMovies(

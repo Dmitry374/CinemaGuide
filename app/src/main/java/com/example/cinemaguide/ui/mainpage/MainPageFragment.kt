@@ -7,18 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.cinemaguide.App
 import com.example.cinemaguide.R
 import com.example.cinemaguide.databinding.FragmentMainPageBinding
-import com.example.cinemaguide.repository.RemoteRepository
 import javax.inject.Inject
 
 class MainPageFragment : Fragment() {
 
     @Inject
-    lateinit var remoteRepository: RemoteRepository
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val mainPageViewModel: MainPageViewModel by viewModels {
+        viewModelFactory
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -36,17 +40,9 @@ class MainPageFragment : Fragment() {
             inflater, R.layout.fragment_main_page, container, false
         )
 
-        val viewModelFactory = MainPageViewModelFactory(remoteRepository)
-
-        val mainPageViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(MainPageViewModel::class.java)
-
         binding.mainPageViewModel = mainPageViewModel
 
         binding.lifecycleOwner = this
-
-        // Load data
-        mainPageViewModel.fetchPopularMovies()
 
         val adapter = MovieAdapter()
         binding.moviesList.adapter = adapter

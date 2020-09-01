@@ -39,6 +39,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.fragment:fragment-ktx:$version_fragment_ktx"
 
     // Core
     implementation "androidx.core:core:$version_core"
