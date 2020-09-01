@@ -47,7 +47,7 @@ class MainPageFragment : Fragment() {
         val adapter = MovieAdapter()
         binding.moviesList.adapter = adapter
 
-        mainPageViewModel.films.observe(viewLifecycleOwner, Observer {
+        mainPageViewModel.filmsList.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
             }
