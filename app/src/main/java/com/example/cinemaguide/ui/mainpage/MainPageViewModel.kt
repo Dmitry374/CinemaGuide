@@ -18,7 +18,7 @@ class MainPageViewModel @Inject constructor(
     }
 
     private fun fetchPopularMovies() {
-        compositeDisposable.add(movieRepository.fetchPopularMovies())
+        compositeDisposable.add(movieRepository.refreshPopularMovies())
     }
 
     override fun onCleared() {

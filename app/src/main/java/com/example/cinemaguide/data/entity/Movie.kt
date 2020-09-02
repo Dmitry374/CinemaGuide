@@ -1,30 +1,30 @@
 package com.example.cinemaguide.data.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
-import com.google.gson.annotations.SerializedName
 
-@Entity(primaryKeys = ["id"])
+@Entity(primaryKeys = ["id", "title"])
 data class Movie(
+    val id: Int,
+    val title: String,
+    @ColumnInfo(name = "original_title")
+    val originalTitle: String,
+    @ColumnInfo(name = "vote_average")
+    val voteAverage: Double,
+    @ColumnInfo(name = "original_language")
+    val originalLanguage: String,
+    @ColumnInfo(name = "release_date")
+    val releaseDate: String,
     val popularity: Double,
-    @field:SerializedName("vote_count")
+    @ColumnInfo(name = "vote_count")
     val voteCount: Int,
     val video: Boolean,
-    @field:SerializedName("poster_path")
+    @ColumnInfo(name = "poster_path")
     val posterPath: String,
-    val id: Int,
     val adult: Boolean,
-    @field:SerializedName("backdrop_path")
+    @ColumnInfo(name = "backdrop_path")
     val backdropPath: String,
-    @field:SerializedName("original_language")
-    val originalLanguage: String,
-    @field:SerializedName("original_title")
-    val originalTitle: String,
-    @field:SerializedName("genre_ids")
-    val genreIds: List<Int>,
-    val title: String,
-    @field:SerializedName("vote_average")
-    val voteAverage: Double,
     val overview: String,
-    @field:SerializedName("release_date")
-    val releaseDate: String
+    @ColumnInfo(name = "genre_ids")
+    val genreIds: List<Int>
 )

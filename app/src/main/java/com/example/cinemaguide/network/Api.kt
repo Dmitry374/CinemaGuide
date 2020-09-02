@@ -1,7 +1,7 @@
 package com.example.cinemaguide.network
 
 import com.example.cinemaguide.data.network.MovieResponse
-import io.reactivex.Single
+import io.reactivex.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -13,5 +13,5 @@ interface Api {
         @Query("language") language: String,
         @Query("page") page: Int,
         @Query("region") region: String
-    ): Single<MovieResponse>
+    ): Flowable<MovieResponse>
 }
