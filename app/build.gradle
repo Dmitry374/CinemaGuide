@@ -59,6 +59,10 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$version_rxjava"
     implementation "io.reactivex.rxjava2:rxandroid:$version_rxandroid"
 
+    // RxJava support for Room
+    implementation "androidx.room:room-rxjava2:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$version_retrofit"

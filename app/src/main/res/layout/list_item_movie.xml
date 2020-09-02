@@ -7,7 +7,7 @@
     <data>
         <variable
             name="movie"
-            type="com.example.cinemaguide.data.Movie.Result" />
+            type="com.example.cinemaguide.data.entity.Movie" />
     </data>
 
     <androidx.cardview.widget.CardView

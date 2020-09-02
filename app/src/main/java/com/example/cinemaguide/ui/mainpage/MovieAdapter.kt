@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cinemaguide.data.Movie
+import com.example.cinemaguide.data.entity.Movie
 import com.example.cinemaguide.databinding.ListItemMovieBinding
 
-class MovieAdapter : ListAdapter<Movie.Result, MovieAdapter.ViewHolder>(MovieDiffCallback()) {
+class MovieAdapter : ListAdapter<Movie, MovieAdapter.ViewHolder>(MovieDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -22,7 +22,7 @@ class MovieAdapter : ListAdapter<Movie.Result, MovieAdapter.ViewHolder>(MovieDif
     class ViewHolder private constructor(private val binding: ListItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Movie.Result) {
+        fun bind(item: Movie) {
             binding.movie = item
             binding.executePendingBindings()
         }
@@ -38,12 +38,12 @@ class MovieAdapter : ListAdapter<Movie.Result, MovieAdapter.ViewHolder>(MovieDif
 
 }
 
-class MovieDiffCallback : DiffUtil.ItemCallback<Movie.Result>() {
-    override fun areItemsTheSame(oldItem: Movie.Result, newItem: Movie.Result): Boolean {
+class MovieDiffCallback : DiffUtil.ItemCallback<Movie>() {
+    override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Movie.Result, newItem: Movie.Result): Boolean {
+    override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
         return oldItem == newItem
     }
 }

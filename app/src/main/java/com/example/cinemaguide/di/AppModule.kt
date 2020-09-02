@@ -1,7 +1,12 @@
 package com.example.cinemaguide.di
 
+import android.content.Context
+import androidx.room.Room
 import com.example.cinemaguide.BuildConfig
 import com.example.cinemaguide.common.Constants.Companion.BASE_URL
+import com.example.cinemaguide.common.Constants.Companion.DATABASE_NAME
+import com.example.cinemaguide.db.AppDatabase
+import com.example.cinemaguide.db.MovieDao
 import com.example.cinemaguide.network.Api
 import dagger.Module
 import dagger.Provides
@@ -38,6 +43,21 @@ class AppModule {
             .client(okHttpBuilder.build())
             .build()
             .create(Api::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideDb(context: Context): AppDatabase {
+        return Room
+            .databaseBuilder(context.applicationContext, AppDatabase::class.java, DATABASE_NAME)
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideMovieDao(db: AppDatabase): MovieDao {
+        return db.movieDao()
     }
 
 }
